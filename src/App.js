@@ -25,7 +25,7 @@ function App() {
     const savedCount = localStorage.getItem('completedCount');
     if (savedCount) setCompletedCount(Number(savedCount));
   }, []);
-
+  
   useEffect(() => {
     let timer;
     if (isRunning && timeLeft > 0) {
@@ -42,9 +42,9 @@ function App() {
       setCompletedCount(newCount);
       localStorage.setItem('completedCount', newCount);
     }
-
+  
     return () => clearInterval(timer);
-  }, [isRunning, timeLeft]);
+  }, [isRunning, timeLeft, completedCount]);
 
   const handleStart = () => {
     if (name.trim() === '') return;
